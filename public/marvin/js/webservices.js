@@ -1,22 +1,21 @@
-// Define the default location of webservices
-
 function getDefaultServicesPrefix() {
-    var servername = "https://marvinjs-service.netlify.app";
-    var webapp = "";
-    return servername + webapp;
+    return "";
 }
 
 function getDefaultServices() {
-    var base = getDefaultServicesPrefix();
+    var apiBase = "/api";
+    var buildUrl = function(endpoint) {
+        return apiBase + "/" + endpoint; 
+    };
     var services = {
-        "clean2dws": base + "/rest-v1/util/convert/clean",
-        "clean3dws" : base + "/rest-v1/util/convert/clean",
-        "molconvertws": base + "/rest-v1/util/calculate/molExport",
-        "stereoinfows": base + "/rest-v1/util/calculate/cipStereoInfo",
-        "reactionconvertws" : base + "/rest-v1/util/calculate/reactionExport",
-        "hydrogenizews" : base + "/rest-v1/util/convert/hydrogenizer",
-        "automapperws" : base + "/rest-v1/util/convert/reactionConverter",
-        "aromatizews": base + "/rest-v1/util/calculate/molExport"
+        "clean2dws":         buildUrl("clean2d"),
+        "clean3dws":         buildUrl("clean3d"),
+        "molconvertws":      buildUrl("molExport"),
+        "stereoinfows":      buildUrl("stereoInfo"),
+        "reactionconvertws": buildUrl("reactionExport"),
+        "hydrogenizews":     buildUrl("hydrogenizer"),
+        "automapperws":      buildUrl("reactionConverter"),
+        "aromatizews":       buildUrl("molExport")
     };
     return services;
 }

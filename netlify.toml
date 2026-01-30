@@ -1,5 +1,9 @@
 # netlify.toml
 
+[[edge_functions]]
+  path = "/api/*"
+  function = "services"
+
 [[redirects]]
   from = "/api/molscribe/*"
   to = "https://yujieq-molscribe.hf.space/:splat"
